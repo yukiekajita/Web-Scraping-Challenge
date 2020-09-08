@@ -26,12 +26,12 @@ def scrape_all ():
     soup = bs(html, 'html.parser')
 
     #Retrieve all elements that contain title and paragrapg
-    news_articles = soup.find_all('div', class_='list_text')
+    #news_articles = soup.find_all('div', class_='list_text')
     #Set up a loop to collect only title and paragraph
     #for news in news_articles:
-    news_title = news_articles.find('div', class_='content_title').text
-    news_paragraph = news_articles.find('div', class_='article_teaser_body').text
-    # Dictionary Entry from Mars Info News  
+    news_title = soup.find('div', class_='content_title').text
+    news_paragraph = soup.find('div', class_='rollover_description_inner').text 
+    
     mars_dict['news_title']= news_title
     mars_dict['news_paragraph']= news_paragraph
     
