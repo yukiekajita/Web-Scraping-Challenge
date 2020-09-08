@@ -1,7 +1,24 @@
 body {
-    background-color: darkgray;
+    background-color: darkgray !important;
 }
 
 #first {
     background-color: darkgray;
+}
+
+table thead {
+    text-align: center !important;
+}
+
+.container {
+    background-color: lightskyblue;
+}
+
+b {
+    font: 5px !important;
+    font-family: -apple-system,BlinkMacSystemFont;
+}
+
+h3 {
+    font: 5px !important;
 }

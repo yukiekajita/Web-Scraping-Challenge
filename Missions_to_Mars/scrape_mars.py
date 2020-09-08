@@ -9,32 +9,10 @@ def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def scrape ():
-    #browser = init_browser ()
+def scrape_all ():
 
-    return {
-        'mars_news': mars_news(),
-        'mars_featured_image': mars_image (),
-        'mars_facts':mars_facts (),
-        'mars_hemispheres': mars_hemispheres ()
-    }
-
-# # Mars 
-    # mars_dict = {
-    #     "news_title": news_title,
-    #     "news_paragraph": news_paragraph,
-    #     "featured_image_url": featured_image_url,
-    #     "fact_table": str(html_table),
-    #     "hemisphere_images": hemisphere_image_urls
-    # }
-
-    # return mars_dict
-
-
-# Create a dictionary that can be imported to Mongo
-
-mars_dict = {}
-def mars_news():
+    # Create a dictionary that can be imported to Mongo
+    mars_dict = {}
 
     #NASA NEWS Scraping
     browser = init_browser()
@@ -49,26 +27,21 @@ def mars_news():
 
     #Retrieve all elements that contain title and paragrapg
     news_articles = soup.find_all('div', class_='list_text')
-
     #Set up a loop to collect only title and paragraph
-    for news in news_articles:
-        news_title = news.find('div', class_='content_title').text
-        news_paragraph = news.find('div', class_='article_teaser_body').text
-
-        # Dictionary Entry from Mars Info News
-        mars_dict['news_title']= news_title
-        mars_dict['news_paragraph']= news_paragraph
+    #for news in news_articles:
+    news_title = news_articles.find('div', class_='content_title').text
+    news_paragraph = news_articles.find('div', class_='article_teaser_body').text
+    # Dictionary Entry from Mars Info News  
+    mars_dict['news_title']= news_title
+    mars_dict['news_paragraph']= news_paragraph
     
-    return mars_dict
-
     # news_title = news_articles.find('div', class_='content_title')[0].text
     # news_paragraph = news_articles.find('div', class_='article_teaser_body')[0].text
 
     # news_title = soup.find('div', class_= "content_title").find('a').text.strip()
     # news_paragraph = soup.find('div', class_= "rollover_description_inner").text.strip()
 
-# JPL Scparing  
-def mars_image():
+    # JPL Scparing  
     browser = init_browser()
     spaceimage_url = 'http://www.jpl.nasa.gov/spaceimages/?search=&category-Mars'
     browser.visit(spaceimage_url)
@@ -89,12 +62,8 @@ def mars_image():
 
     # Dictionary Entry from JPL Mars Space Images - Featured Image
     mars_dict['featured_image_url'] = featured_image_url
-    
-    browser.quit()
-    return mars_dict
-       
-# Mars Facts Scraping
-def mars_facts():
+
+    # Mars Facts Scraping
     browser = init_browser()
     facts_url = 'http://space-facts.com/mars/'
     browser.visit(facts_url)
@@ -109,15 +78,12 @@ def mars_facts():
     # assign columns and set index of dataframe
     mars_facts.columns = ['Description', 'Mars']
     html_table = mars_facts.to_html(index=False)
+    html_table = html_table.replace('\n', '')
     # Dictionary Entry from JPL Mars Space Images - Featured Image
     mars_dict['html_table'] = html_table
-    
-    browser.quit()
-    return mars_dict
-    
 
-#Mars Hemisphere Scparing
-def mars_hemispheres():
+
+    #Mars Hemisphere Scparing
     browser = init_browser()
     hemisphere_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(hemisphere_url)
@@ -153,10 +119,15 @@ def mars_hemispheres():
     # Dictionary Entry from JPL Mars Space Images - Featured Image
     mars_dict['hemisphere_image'] = hemisphere_image_urls
     
-    print (mars_dict)
+
+    # Mars 
+    # mars_dict = {
+    #     "news_title": news_title,
+    #     "news_paragraph": news_paragraph,
+    #     "featured_image_url": featured_image_url,
+    #     "fact_table": str(html_table),
+    #     "hemisphere_images": hemisphere_image_urls
+    # }
+
     browser.quit()
     return mars_dict
-    
-    
-
-
