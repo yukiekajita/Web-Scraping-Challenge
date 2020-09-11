@@ -24,23 +24,14 @@ def scrape_all ():
 
     # Parse HTML with Beautiful Soup
     soup = bs(html, 'html.parser')
-
-    #Retrieve all elements that contain title and paragrapg
-    #news_articles = soup.find_all('div', class_='list_text')
-    #Set up a loop to collect only title and paragraph
-    #for news in news_articles:
-    news_title = soup.find('div', class_='content_title').text
-    news_paragraph = soup.find('div', class_='rollover_description_inner').text 
-    
+    #Retrieve all elements that contain title and paragraph
+    slide = soup.find('li', class_="slide")
+    news_title = slide.find('div', class_='content_title').text
+    news_paragraph = slide.find('div', class_='article_teaser_body').text 
+    # Dictionary Entry: latest news' title and paragraph in dictionary
     mars_dict['news_title']= news_title
     mars_dict['news_paragraph']= news_paragraph
     
-    # news_title = news_articles.find('div', class_='content_title')[0].text
-    # news_paragraph = news_articles.find('div', class_='article_teaser_body')[0].text
-
-    # news_title = soup.find('div', class_= "content_title").find('a').text.strip()
-    # news_paragraph = soup.find('div', class_= "rollover_description_inner").text.strip()
-
     # JPL Scparing  
     browser = init_browser()
     spaceimage_url = 'http://www.jpl.nasa.gov/spaceimages/?search=&category-Mars'
@@ -59,8 +50,7 @@ def scrape_all ():
     # Scrape the URL images with href info
     image_url = soup.find('figure', class_='lede').a['href']
     featured_image_url = f'https://www.jpl.nasa.gov{image_url}'
-
-    # Dictionary Entry from JPL Mars Space Images - Featured Image
+    # Dictionary Entry: JPL Mars Space Images - Featured Image
     mars_dict['featured_image_url'] = featured_image_url
 
     # Mars Facts Scraping
@@ -75,28 +65,28 @@ def scrape_all ():
     except BaseException:
         return None
 
-    # assign columns and set index of dataframe
+    # Assign columns' name: Description and Mars 
     mars_facts.columns = ['Description', 'Mars']
+    # Obtain the table with html file without index
     html_table = mars_facts.to_html(index=False)
+    # Remove \n from the table
     html_table = html_table.replace('\n', '')
-    # Dictionary Entry from JPL Mars Space Images - Featured Image
+    # Dictionary Entry of table
     mars_dict['html_table'] = html_table
-
 
     #Mars Hemisphere Scparing
     browser = init_browser()
     hemisphere_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(hemisphere_url)
     
-    # Iterate through all pages: 50 pages on the website
-    hemisphere_html = browser.html
     # Parse HTML with Beautiful Soup
+    hemisphere_html = browser.html
     hemisphere_soup = bs(hemisphere_html, 'html.parser')
 
-    # Create a dictionary to store titles and image links
+    # Create a dictionary to store images' titles and links
     hemisphere_image_urls = []
 
-    # Retrieve all elements that contain book information
+    # Retrieve all elements that contain hemisphere information
     hemispheres = hemisphere_soup.find_all('div', class_='item')
     # Iterate through each image
     for hemisphere in hemispheres:
@@ -116,18 +106,8 @@ def scrape_all ():
         image_url = downloads.find("a")["href"]
         hemisphere_image_urls.append({"title": title, "img_url": image_url})
 
-    # Dictionary Entry from JPL Mars Space Images - Featured Image
+    # Dictionary Entry of hemisphere images
     mars_dict['hemisphere_image'] = hemisphere_image_urls
-    
-
-    # Mars 
-    # mars_dict = {
-    #     "news_title": news_title,
-    #     "news_paragraph": news_paragraph,
-    #     "featured_image_url": featured_image_url,
-    #     "fact_table": str(html_table),
-    #     "hemisphere_images": hemisphere_image_urls
-    # }
 
     browser.quit()
     return mars_dict

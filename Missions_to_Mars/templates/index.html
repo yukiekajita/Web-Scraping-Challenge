@@ -9,21 +9,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Stlesheet link -->
     <link rel="stylesheet" href="style.css">
-    <!-- Glyphicons Fontawesome link -->
-    <script src="https://kit.fontawesome.com/f11d2abb65.js" crossorigin="anonymous"></script>
     
 </head>
 <body style="background-color: rgb(233, 200, 160);">
-    <!-- Navigation Section -->
+    <!-- First Scrape Button Section -->
     <div class="container" style="background-color: darkgray;">
-
         <div class="jumbotron text-center" style="background-color: rgb(218, 164, 95);">
             <h1>Mission to Mars</h1>
             <p><a class="btn btn-primary btn-lg" style="background-color: brown; border: brown" href="/scrape" role="button">Click & Scrape New Data</a></p>
         </div>
     </div>  
     <br>
-    <!-- Latest News Mars -->
+    <!-- Latest News Mars with title and paragraph -->
     <div class="container" style="background-color: rgb(218, 164, 95);">
         <h2>Latest Mars News!</h2>
         <div class="row" id="mars_news">
@@ -35,19 +32,21 @@
     </div>
     <br>
     <br>
+    <!-- Featrured Image Section -->
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                     <h2>Featured Mars Image</h2>
                     <img src="{{ mars.featured_image_url}}" style="max-width:100%; max-height: auto; margin-bottom: 30px" alt="Mars Featured Image">
             </div>
-                <!-- Table -->
+                <!-- Table: Put next to the featured image -->
             <div class="col-md-4">
                     <h2>Mars Facts</h2>
                     {{mars.html_table | safe}}
             </div>
         </div> 
     </div> 
+    <!-- Mars Hemisphere Images Section -->
     <div class="container">
         <div class="row">
              <h2>Mars Hemispheres</h2>

@@ -15,11 +15,11 @@ def index():
     mars_dict = mongo.db.collection.find_one()
     return render_template("index.html", mars = mars_dict)
 
-
+# Create scrape route
 @app.route("/scrape")
 def scrape():
 
-    # Run the scrape function
+    # Run the scrape function from scrape_mars.py
     mars_data = scrape_mars.scrape_all()
 
     # Update the Mongo Database
