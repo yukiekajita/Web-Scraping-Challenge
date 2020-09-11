@@ -2,10 +2,6 @@ body {
     background-color: darkgray !important;
 }
 
-#first {
-    background-color: darkgray;
-}
-
 table thead {
     text-align: center !important;
 }
@@ -21,4 +17,11 @@ b {
 
 h3 {
     font: 5px !important;
+}
+
+/* Images */
+img{
+    width:50% !important;
+    height:50% !important;
+    position: center;
 }

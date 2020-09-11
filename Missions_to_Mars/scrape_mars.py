@@ -2,22 +2,24 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import pandas as pd
-import os
+import time
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def scrape_all ():
+def scrape_all():
 
     # Create a dictionary that can be imported to Mongo
     mars_dict = {}
 
-    #NASA NEWS Scraping
+    ## Mars.NASA.GOV NEWS Scraping ##
     browser = init_browser()
     nasa_url = 'http://mars.nasa.gov/news/'
     browser.visit(nasa_url)
+    
+    time.sleep(5)
 
     # HTML object
     html = browser.html
@@ -32,7 +34,7 @@ def scrape_all ():
     mars_dict['news_title']= news_title
     mars_dict['news_paragraph']= news_paragraph
     
-    # JPL Scparing  
+    ## JPL.NASA.GOV Scparing ## 
     browser = init_browser()
     spaceimage_url = 'http://www.jpl.nasa.gov/spaceimages/?search=&category-Mars'
     browser.visit(spaceimage_url)
@@ -53,7 +55,7 @@ def scrape_all ():
     # Dictionary Entry: JPL Mars Space Images - Featured Image
     mars_dict['featured_image_url'] = featured_image_url
 
-    # Mars Facts Scraping
+    ## SPACE_FACTS Scraping ##
     browser = init_browser()
     facts_url = 'http://space-facts.com/mars/'
     browser.visit(facts_url)
@@ -74,7 +76,7 @@ def scrape_all ():
     # Dictionary Entry of table
     mars_dict['html_table'] = html_table
 
-    #Mars Hemisphere Scparing
+    ## Mars Hemisphere Images Scparing ##
     browser = init_browser()
     hemisphere_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(hemisphere_url)
