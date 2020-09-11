@@ -1,5 +1,5 @@
 # Web-Scraping-Challenge
-In this assignment, I built a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
+In this assignment, I built a web application that scraped various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
 
 ## Step 1 - Scraping
 Completed my initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
@@ -30,14 +30,14 @@ Completed my initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and
 
 * I saved both the image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name. I used a Python dictionary to store the data using the keys `img_url` and `title`.
 
-* I appended the dictionary with the image url string and the hemisphere title to a list. This list contains one dictionary for each hemisphere.
+* I appended the dictionary with the image url string and the hemisphere title to a list. This list contained one dictionary for each hemisphere.
 
 
 ## Step 2 - MongoDB and Flask Application
 
 I used MongoDB with Flask templating to create a new HTML page that displays all of the information that was scraped from the URLs above.
 
-* I started by converting your Jupyter notebook into a Python script called `scrape_mars.py` with a function called `scrape_all()` that will execute all of my scraping code from above and return one Python dictionary containing all of the scraped data. I modified some scripts in python when I had errors in python.
+* I started by converting your Jupyter notebook into a Python script called `scrape_mars.py` with a function called `scrape_all()` that executed all of my scraping code from above and returned one Python dictionary containing all of the scraped data. I modified some scripts in python when I had errors in python.
 
 * I created a route called `/scrape` that imported my `scrape_mars.py` script and called my `scrape` function.
 
