@@ -1,4 +1,4 @@
-# Web-Scraping-Challenge
+# Web-Scraping-Application Project - NASA's Mission to Mars
 In this assignment, I built a web application that scraped various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
 
 * The main webpage image
@@ -58,5 +58,5 @@ I used MongoDB with Flask templating to create a new HTML page that displays all
 
 
 
-
+Enjoy!
 
