@@ -3,7 +3,7 @@ In this assignment, I built a web application that scraped various websites for 
 
 * The main webpage image
 
-![Website_Image](Missions_to_Mars/Images/Website_image_1.png)
+![Website_Image](Missions_to_Mars/Images/Website_image_3.png)
 
 ## Step 1 - Scraping
 Completed my initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
