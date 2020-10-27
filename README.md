@@ -1,6 +1,10 @@
 # Web-Scraping-Challenge
 In this assignment, I built a web application that scraped various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
 
+* The main webpage image
+
+![Website_Image](Missions_to_Mars/Images/Website_Images_1)
+
 ## Step 1 - Scraping
 Completed my initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
