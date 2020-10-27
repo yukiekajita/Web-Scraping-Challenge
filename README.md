@@ -1,5 +1,5 @@
 # Web-Scraping-Application Project - NASA's Mission to Mars
-In this assignment, I built a web application that scraped various websites for data related to the Mission to Mars and displays the information in a single HTML page. 
+I built a web application with Python, that scraped various websites for data related to the Mission to Mars and displayed the scraped data and image information in a single HTML page. 
 
 * The main webpage image
 
