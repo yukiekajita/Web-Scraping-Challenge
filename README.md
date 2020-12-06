@@ -1,18 +1,19 @@
 # Web-Scraping-Application Project - NASA's Mission to Mars
-I built a web application with Python, that scraped various websites for data related to the Mission to Mars and displayed the scraped data and image information in a single HTML page. 
+I built a web application with Python-Flask, that scraped various websites for data related to the Mission to Mars, and displayed the scraped data and image information in a single HTML page. 
 
 * The main webpage image
 
 ![Website_Image](Missions_to_Mars/Images/Website_image_3.png)
 
 ## Step 1 - Scraping
-Completed my initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
+Completed the initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
-* Created a Jupyter Notebook file called `mission_to_mars.ipynb` and used this to complete all of your scraping and analysis tasks. 
+* Created a Jupyter Notebook file called `mission_to_mars.ipynb` to complete all of the scraping and analysis tasks. 
 
 ### NASA Mars News
 
-* Scraped the [NASA Mars News Site](https://mars.nasa.gov/news/) and collected the latest News Title and Paragraph Text. Assigned the text to variables that I referenced later.
+* Scraped the [NASA Mars News Site](https://mars.nasa.gov/news/) and collected the latest News Title and Paragraph Text. 
+* Assigned the text to variables that I referenced later.
 
 ### JPL Mars Space Images - Featured Image
 
